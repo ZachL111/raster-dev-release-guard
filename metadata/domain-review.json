@@ -1,0 +1,73 @@
+{
+  "repo": "raster-dev-release-guard",
+  "language": "Rust",
+  "category": "Developer tools",
+  "goal": "Build a Rust toolkit that studies release behavior through layout fixtures, with stable geometry snapshots and offline replay mode.",
+  "review_model": {
+    "terms": [
+      "change width",
+      "diagnostic quality",
+      "review cost",
+      "safe rewrite"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "change width",
+      "signal": 49,
+      "slack": 31,
+      "drag": 24,
+      "confidence": 49,
+      "score": 106,
+      "lane": "watch"
+    },
+    {
+      "name": "stress",
+      "focus": "diagnostic quality",
+      "signal": 59,
+      "slack": 27,
+      "drag": 17,
+      "confidence": 83,
+      "score": 177,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "review cost",
+      "signal": 53,
+      "slack": 51,
+      "drag": 30,
+      "confidence": 67,
+      "score": 134,
+      "lane": "watch"
+    },
+    {
+      "name": "recovery",
+      "focus": "safe rewrite",
+      "signal": 65,
+      "slack": 46,
+      "drag": 29,
+      "confidence": 63,
+      "score": 152,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "change width",
+      "signal": 59,
+      "slack": 50,
+      "drag": 18,
+      "confidence": 87,
+      "score": 201,
+      "lane": "ship"
+    }
+  ]
+}
