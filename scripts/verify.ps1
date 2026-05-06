@@ -61,3 +61,9 @@ foreach ($pathPattern in $knownPaths) {
 cargo test
 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-raster-dev-release-detail.ps1
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-raster-dev-release-properties.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/check-raster-dev-release-golden.ps1
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
